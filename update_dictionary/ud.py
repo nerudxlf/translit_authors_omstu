@@ -10,10 +10,11 @@ class UpdateDictionary:
     @staticmethod
     def __spelling_options(fio: str) -> str:
         dictionary_letter = {
-            "ja": "ya", "ya": "ja", "w": "v", "v": "w", "ts": "tz", "tz": "ts",
+            "ja": "ya", "ya": "ja", "w": "v", "v": "w", "ts": "tz", "tz": "ts", "h": "kh", "zh": "j", "ij": "ii",
+            "ju": "yu", "sch": "shch",
         }
         dictionary_symbol = {
-            " ": ", ", ".": "., "
+            ".": "., ", '’': "'",
         }
         return_string = ""
         for key, item in dictionary_letter.items():

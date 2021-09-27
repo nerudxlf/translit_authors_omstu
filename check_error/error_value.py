@@ -23,4 +23,4 @@ class ErrorValue:
         return self.__error_list
 
     def get_error_value(self) -> float:
-        return len(self.__error_list) / self._total_authors * 100
+        return round(len(self.__error_list) / self._total_authors * 100, 2)
