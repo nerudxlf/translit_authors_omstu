@@ -9,21 +9,28 @@ class UpdateDictionary:
 
     @staticmethod
     def __spelling_options(fio: str) -> str:
+        def modern_string(string: str, dictionary: dict, value=0) -> str:
+            for key, item in dictionary.items():
+                if fio.find(key) != -1:
+                    if value:
+                        string += f"{fio.replace(key, item, 1)}"
+                    else:
+                        string += f"{fio.replace(key, item)}"
+            return string
         dictionary_letter = {
-            "ja": "ya", "ya": "ja", "w": "v", "v": "w", "ts": "tz", "tz": "ts", "h": "kh", "zh": "j", "ij": "ii",
-            "ju": "yu", "sch": "shch",
+            "ja": "ya", "ya": "ja", "w": "v", "v": "w", "ts": "tz", "tz": "ts", "h": "kh", "zh": "j", "j": "i",
+            "ju": "y", "sch": "shch", "ji": "y", "juh": "ykh", "ij": "y",
         }
         dictionary_symbol = {
-            ".": "., ", '’': "'",
+            ".": "., ", '’': "'", "'": ""
+        }
+        dictionary_letter_new = {
+            "ju": "yu", "'": "y", "j": "z"
         }
         return_string = ""
-        for key, item in dictionary_letter.items():
-            get_fio_list = fio.split()
-            if get_fio_list[0].find(key) != -1:
-                return_string += f"{get_fio_list[0].replace(key, item)} {get_fio_list[1]}"
-        for key, item in dictionary_symbol.items():
-            if fio.find(key) != -1:
-                return_string += f"{fio.replace(key, item, 1)}"
+        return_string = modern_string(return_string, dictionary_letter)
+        return_string = modern_string(return_string, dictionary_symbol, 1)
+        return_string = modern_string(return_string, dictionary_letter_new)
         return fio + return_string
 
     @staticmethod

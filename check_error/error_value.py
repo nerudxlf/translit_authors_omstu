@@ -19,7 +19,6 @@ class ErrorValue:
         for author in authors_list:
             if dictionary_string.find(author) == -1:
                 self.__error_list.append(author)
-        print(self.__error_list)
         return self.__error_list
 
     def get_error_value(self) -> float:
